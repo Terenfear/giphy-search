@@ -33,7 +33,7 @@ const Pagination = (props: PaginationProps) => {
   )
 
   return (
-    <Box display="flex" alignItems="center" gap={2}>
+    <Box display="flex" alignItems="center" gap={2} data-testid="pagination">
       <IconButton disabled={!hasPrev} onClick={onFirstPageClick}>
         <FirstPageIcon />
       </IconButton>

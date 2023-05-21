@@ -106,7 +106,7 @@ const SearchPage = () => {
         <CenteredAlert severity="info">No results found</CenteredAlert>
       ) : (
         <>
-          <List>
+          <List data-testid="gif-list">
             {data.data.map((gif) => (
               <ImageRippleWrapper
                 key={gif.id}
