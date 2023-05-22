@@ -1,5 +1,4 @@
 import { GetGifsParams, GetGifsResponse } from "./types"
-import qs from "qs-lite"
 
 const BASE_URL = "https://api.giphy.com/v1"
 
@@ -23,7 +22,9 @@ export const MAX_TOTAL_COUNT = MAX_OFFSET + 1
 
 export const getGifs = async (params: GetGifsParams) => {
   const response = await fetch(
-    `${BASE_URL}/gifs/search?api_key=${GIPHY_KEY}&${qs.stringify(params)}`
+    `${BASE_URL}/gifs/search?api_key=${GIPHY_KEY}&${new URLSearchParams(
+      params as Record<string, string> // cast to avoid property type restrictions
+    )}`
   )
   if (!response.ok) return Promise.reject(response)
   // Nice to have(May 21, 2023): add parsing?
